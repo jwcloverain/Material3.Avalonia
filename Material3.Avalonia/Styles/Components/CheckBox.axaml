@@ -1,0 +1,320 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:attached="clr-namespace:Material3.Avalonia.Attached"
+                    xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls"
+                    xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers"
+                    xmlns:internal="clr-namespace:Material3.Avalonia.Attached.Controls.Internal"
+                    xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
+                    xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
+                    xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols"
+                    xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions">
+
+    <ControlTheme x:Key="{x:Type CheckBox}" TargetType="CheckBox">
+        <Setter Property="internal:HoverState.IsEnabled" Value="True" />
+        <Setter Property="internal:KeyboardActivationGuard.IsEnabled" Value="True" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="attached:DensityAssist.Density" Value="Default" />
+        <Setter Property="helpers:Typography.TextStyle" Value="BodyLarge" />
+        <Setter Property="Foreground" Value="{markup:Token MdSysOnSurfaceBrush}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="attached:FocusRing.Brush" Value="{markup:Token MdCompCheckboxFocusIndicatorBrush}" />
+        <Setter Property="attached:FocusRing.Thickness" Value="{markup:Token MdCompCheckboxFocusIndicatorThickness}" />
+        <Setter Property="attached:FocusRing.Offset" Value="{markup:Token MdCompCheckboxFocusIndicatorOffset}" />
+        <Setter Property="attached:FocusRing.CornerRadius" Value="{markup:DynamicCornerRadius MdCompCheckboxStateLayerShape}" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <DataValidationErrors helpers:Typography.TextStyle="{x:Null}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Padding="{TemplateBinding Padding}">
+                        <primitives:CheckBoxContentMotion x:Name="PART_InteractionArea"
+                                                          Background="Transparent"
+                                                          TargetSize="{markup:DensityScalar MdImplCheckboxTargetSize, MostDense=Dense5}"
+                                                          IndicatorSlotWidth="{markup:Token MdImplCheckboxTargetSize}"
+                                                          StateLayerSize="{markup:Token MdCompCheckboxStateLayerSize}">
+                            <Grid x:Name="PART_FocusTarget"
+                                  UseLayoutRounding="False"
+                                  IsHitTestVisible="False"
+                                  TemplatedControl.IsTemplateFocusTarget="True"
+                                  attached:FocusRing.Brush="{TemplateBinding attached:FocusRing.Brush}"
+                                  attached:FocusRing.Thickness="{TemplateBinding attached:FocusRing.Thickness}"
+                                  attached:FocusRing.Offset="{TemplateBinding attached:FocusRing.Offset}"
+                                  attached:FocusRing.CornerRadius="{TemplateBinding attached:FocusRing.CornerRadius}">
+                                <primitives:StateLayer x:Name="PART_StateLayer"
+                                                       CornerRadius="{markup:DynamicCornerRadius MdCompCheckboxStateLayerShape}" />
+                                <primitives:InkRipple x:Name="PART_Ripple"
+                                                      CornerRadius="{markup:DynamicCornerRadius MdCompCheckboxStateLayerShape}"
+                                                      CenterOutsideShape="True"
+                                                      InteractionTarget="{Binding #PART_InteractionArea}" />
+                                <Border x:Name="PART_Indicator"
+                                        Width="{markup:Token MdCompCheckboxContainerSize}"
+                                        Height="{markup:Token MdCompCheckboxContainerSize}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        CornerRadius="{markup:Token MdCompCheckboxContainerShape}">
+                                    <Border.Transitions>
+                                        <Transitions>
+                                            <transitions:SpringThicknessTransition Property="BorderThickness" Style="Spatial" Speed="Fast" />
+                                            <transitions:SpringBrushTransition Property="Background" Style="Effects" Speed="Fast" />
+                                            <transitions:SpringBrushTransition Property="BorderBrush" Style="Effects" Speed="Fast" />
+                                        </Transitions>
+                                    </Border.Transitions>
+                                </Border>
+                                <primitives:IconPresenter x:Name="PART_Icon"
+                                                          Size="{markup:Token MdCompCheckboxIconSize}"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center"
+                                                          FlowDirection="LeftToRight"
+                                                          IconChangeAnimation="Scale">
+                                    <primitives:IconPresenter.Transitions>
+                                        <Transitions>
+                                            <transitions:SpringBrushTransition Property="Foreground" Style="Effects" Speed="Fast" />
+                                        </Transitions>
+                                    </primitives:IconPresenter.Transitions>
+                                </primitives:IconPresenter>
+                            </Grid>
+                            <ContentPresenter x:Name="PART_ContentPresenter"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              helpers:Typography.TextStyle="{TemplateBinding helpers:Typography.TextStyle}"
+                                              RecognizesAccessKey="True"
+                                              TextWrapping="Wrap" />
+                        </primitives:CheckBoxContentMotion>
+                    </Border>
+                </DataValidationErrors>
+            </ControlTemplate>
+        </Setter>
+
+        <Style Selector="^ /template/ primitives|CheckBoxContentMotion#PART_InteractionArea">
+            <Setter Property="HasContent" Value="True" />
+        </Style>
+
+        <Style Selector="^:empty /template/ primitives|CheckBoxContentMotion#PART_InteractionArea">
+            <Setter Property="HasContent" Value="False" />
+        </Style>
+
+        <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter:not(:empty)">
+            <Setter Property="Margin" Value="{markup:DynamicThickness MdSysSpacing100 MdSysSpacing0}" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Cursor" Value="Arrow" />
+        </Style>
+
+        <!-- State -->
+        <Style Selector="^ /template/ Border#PART_Indicator">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompCheckboxUnselectedOutlineBrush}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompCheckboxUnselectedOutlineWidth}" />
+        </Style>
+
+        <Style Selector="^ /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="Brush" Value="{markup:Token MdCompCheckboxUnselectedHoverStateLayerBrush}" />
+        </Style>
+
+        <Style Selector="^ /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="Brush" Value="{markup:Token MdCompCheckboxUnselectedPressedStateLayerBrush}" />
+            <Setter Property="BaseOpacity" Value="{markup:Token MdCompCheckboxUnselectedPressedStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^ /template/ primitives|IconPresenter#PART_Icon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompCheckboxSelectedIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked /template/ primitives|IconPresenter#PART_Icon">
+            <Setter Property="Value" Value="{symbols:Symbol Check}" />
+        </Style>
+
+        <Style Selector="^:indeterminate /template/ primitives|IconPresenter#PART_Icon">
+            <Setter Property="Value" Value="{symbols:Symbol Remove}" />
+        </Style>
+
+        <Style Selector="^:checked /template/ Border#PART_Indicator, ^:indeterminate /template/ Border#PART_Indicator">
+            <Setter Property="Background" Value="{markup:Token MdCompCheckboxSelectedContainerBrush}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompCheckboxSelectedOutlineWidth}" />
+        </Style>
+
+        <Style Selector="^:checked /template/ primitives|InkRipple#PART_Ripple, ^:indeterminate /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="Brush" Value="{markup:Token MdCompCheckboxSelectedPressedStateLayerBrush}" />
+            <Setter Property="BaseOpacity" Value="{markup:Token MdCompCheckboxSelectedPressedStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:unchecked.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompCheckboxUnselectedHoverOutlineBrush}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompCheckboxUnselectedHoverOutlineWidth}" />
+        </Style>
+
+        <Style Selector="^:unchecked.m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompCheckboxUnselectedHoverStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompCheckboxUnselectedHoverStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:unchecked:focus-visible:not(:pressed):not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompCheckboxUnselectedFocusOutlineBrush}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompCheckboxUnselectedFocusOutlineWidth}" />
+        </Style>
+
+        <Style Selector="^:unchecked:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompCheckboxUnselectedFocusStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompCheckboxUnselectedFocusStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:unchecked:pressed:not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompCheckboxUnselectedPressedOutlineBrush}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompCheckboxUnselectedPressedOutlineWidth}" />
+        </Style>
+
+        <Style Selector="^:checked.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:indeterminate.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="Background" Value="{markup:Token MdCompCheckboxSelectedHoverContainerBrush}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompCheckboxSelectedHoverOutlineWidth}" />
+        </Style>
+
+        <Style Selector="^:checked.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:indeterminate.m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompCheckboxSelectedHoverIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked.m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer, ^:indeterminate.m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompCheckboxSelectedHoverStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompCheckboxSelectedHoverStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked:focus-visible:not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:indeterminate:focus-visible:not(:pressed):not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="Background" Value="{markup:Token MdCompCheckboxSelectedFocusContainerBrush}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompCheckboxSelectedFocusOutlineWidth}" />
+        </Style>
+
+        <Style Selector="^:checked:focus-visible:not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:indeterminate:focus-visible:not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompCheckboxSelectedFocusIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer, ^:indeterminate:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompCheckboxSelectedFocusStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompCheckboxSelectedFocusStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked:pressed:not(:disabled) /template/ Border#PART_Indicator, ^:indeterminate:pressed:not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="Background" Value="{markup:Token MdCompCheckboxSelectedPressedContainerBrush}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompCheckboxSelectedPressedOutlineWidth}" />
+        </Style>
+
+        <Style Selector="^:checked:pressed:not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:indeterminate:pressed:not(:disabled) /template/ primitives|IconPresenter#PART_Icon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompCheckboxSelectedPressedIconBrush}" />
+        </Style>
+
+
+        <!-- Error -->
+
+        <Style Selector="^:unchecked[(controls|CheckBoxAssist.IsError)=True]:not(.m3-hovered):not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:unchecked[(DataValidationErrors.HasErrors)=True]:not(.m3-hovered):not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompCheckboxUnselectedErrorOutlineBrush}" />
+        </Style>
+
+        <Style Selector="^:unchecked[(controls|CheckBoxAssist.IsError)=True].m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:unchecked[(DataValidationErrors.HasErrors)=True].m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompCheckboxUnselectedErrorHoverOutlineBrush}" />
+        </Style>
+
+        <Style Selector="^:unchecked[(controls|CheckBoxAssist.IsError)=True].m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer, ^:unchecked[(DataValidationErrors.HasErrors)=True].m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompCheckboxErrorHoverStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompCheckboxErrorHoverStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:unchecked[(controls|CheckBoxAssist.IsError)=True]:focus-visible:not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:unchecked[(DataValidationErrors.HasErrors)=True]:focus-visible:not(:pressed):not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompCheckboxUnselectedErrorFocusOutlineBrush}" />
+        </Style>
+
+        <Style Selector="^:unchecked[(controls|CheckBoxAssist.IsError)=True]:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer, ^:unchecked[(DataValidationErrors.HasErrors)=True]:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompCheckboxErrorFocusStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompCheckboxErrorFocusStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:unchecked[(controls|CheckBoxAssist.IsError)=True]:pressed:not(:disabled) /template/ Border#PART_Indicator, ^:unchecked[(DataValidationErrors.HasErrors)=True]:pressed:not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompCheckboxUnselectedErrorPressedOutlineBrush}" />
+        </Style>
+
+        <Style Selector="^:checked[(controls|CheckBoxAssist.IsError)=True]:not(.m3-hovered):not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:checked[(DataValidationErrors.HasErrors)=True]:not(.m3-hovered):not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:indeterminate[(controls|CheckBoxAssist.IsError)=True]:not(.m3-hovered):not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:indeterminate[(DataValidationErrors.HasErrors)=True]:not(.m3-hovered):not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="Background" Value="{markup:Token MdCompCheckboxSelectedErrorContainerBrush}" />
+        </Style>
+
+        <Style Selector="^:checked[(controls|CheckBoxAssist.IsError)=True]:not(.m3-hovered):not(:focus-visible):not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:checked[(DataValidationErrors.HasErrors)=True]:not(.m3-hovered):not(:focus-visible):not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:indeterminate[(controls|CheckBoxAssist.IsError)=True]:not(.m3-hovered):not(:focus-visible):not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:indeterminate[(DataValidationErrors.HasErrors)=True]:not(.m3-hovered):not(:focus-visible):not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompCheckboxSelectedErrorIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked[(controls|CheckBoxAssist.IsError)=True].m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:checked[(DataValidationErrors.HasErrors)=True].m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:indeterminate[(controls|CheckBoxAssist.IsError)=True].m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:indeterminate[(DataValidationErrors.HasErrors)=True].m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="Background" Value="{markup:Token MdCompCheckboxSelectedErrorHoverContainerBrush}" />
+        </Style>
+
+        <Style Selector="^:checked[(controls|CheckBoxAssist.IsError)=True].m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:checked[(DataValidationErrors.HasErrors)=True].m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:indeterminate[(controls|CheckBoxAssist.IsError)=True].m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:indeterminate[(DataValidationErrors.HasErrors)=True].m3-hovered:not(:focus-visible):not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompCheckboxSelectedErrorHoverIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked[(controls|CheckBoxAssist.IsError)=True].m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer, ^:checked[(DataValidationErrors.HasErrors)=True].m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer, ^:indeterminate[(controls|CheckBoxAssist.IsError)=True].m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer, ^:indeterminate[(DataValidationErrors.HasErrors)=True].m3-hovered:not(:focus-visible):not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompCheckboxErrorHoverStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompCheckboxErrorHoverStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked[(controls|CheckBoxAssist.IsError)=True]:focus-visible:not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:checked[(DataValidationErrors.HasErrors)=True]:focus-visible:not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:indeterminate[(controls|CheckBoxAssist.IsError)=True]:focus-visible:not(:pressed):not(:disabled) /template/ Border#PART_Indicator, ^:indeterminate[(DataValidationErrors.HasErrors)=True]:focus-visible:not(:pressed):not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="Background" Value="{markup:Token MdCompCheckboxSelectedErrorFocusContainerBrush}" />
+        </Style>
+
+        <Style Selector="^:checked[(controls|CheckBoxAssist.IsError)=True]:focus-visible:not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:checked[(DataValidationErrors.HasErrors)=True]:focus-visible:not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:indeterminate[(controls|CheckBoxAssist.IsError)=True]:focus-visible:not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:indeterminate[(DataValidationErrors.HasErrors)=True]:focus-visible:not(:pressed):not(:disabled) /template/ primitives|IconPresenter#PART_Icon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompCheckboxSelectedErrorFocusIconBrush}" />
+        </Style>
+
+        <Style Selector="^:checked[(controls|CheckBoxAssist.IsError)=True]:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer, ^:checked[(DataValidationErrors.HasErrors)=True]:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer, ^:indeterminate[(controls|CheckBoxAssist.IsError)=True]:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer, ^:indeterminate[(DataValidationErrors.HasErrors)=True]:focus-visible:not(:disabled) /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Brush" Value="{markup:Token MdCompCheckboxErrorFocusStateLayerBrush}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompCheckboxErrorFocusStateLayerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked[(controls|CheckBoxAssist.IsError)=True]:pressed:not(:disabled) /template/ Border#PART_Indicator, ^:checked[(DataValidationErrors.HasErrors)=True]:pressed:not(:disabled) /template/ Border#PART_Indicator, ^:indeterminate[(controls|CheckBoxAssist.IsError)=True]:pressed:not(:disabled) /template/ Border#PART_Indicator, ^:indeterminate[(DataValidationErrors.HasErrors)=True]:pressed:not(:disabled) /template/ Border#PART_Indicator">
+            <Setter Property="Background" Value="{markup:Token MdCompCheckboxSelectedErrorPressedContainerBrush}" />
+        </Style>
+
+        <Style Selector="^:checked[(controls|CheckBoxAssist.IsError)=True]:pressed:not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:checked[(DataValidationErrors.HasErrors)=True]:pressed:not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:indeterminate[(controls|CheckBoxAssist.IsError)=True]:pressed:not(:disabled) /template/ primitives|IconPresenter#PART_Icon, ^:indeterminate[(DataValidationErrors.HasErrors)=True]:pressed:not(:disabled) /template/ primitives|IconPresenter#PART_Icon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompCheckboxSelectedErrorPressedIconBrush}" />
+        </Style>
+
+        <Style Selector="^[(controls|CheckBoxAssist.IsError)=True]:not(:disabled) /template/ primitives|InkRipple#PART_Ripple, ^[(DataValidationErrors.HasErrors)=True]:not(:disabled) /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="Brush" Value="{markup:Token MdCompCheckboxErrorPressedStateLayerBrush}" />
+            <Setter Property="BaseOpacity" Value="{markup:Token MdCompCheckboxErrorPressedStateLayerOpacity}" />
+        </Style>
+
+        <!-- Disabled -->
+
+        <Style Selector="^:disabled /template/ primitives|StateLayer#PART_StateLayer">
+            <Setter Property="Opacity" Value="0" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ primitives|InkRipple#PART_Ripple">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+
+        <Style Selector="^:unchecked:disabled /template/ Border#PART_Indicator">
+            <Setter Property="BorderBrush" Value="{markup:Token MdCompCheckboxUnselectedDisabledOutlineBrush}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompCheckboxUnselectedDisabledOutlineWidth}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompCheckboxUnselectedDisabledContainerOpacity}" />
+        </Style>
+
+        <Style Selector="^:checked:disabled /template/ Border#PART_Indicator, ^:indeterminate:disabled /template/ Border#PART_Indicator">
+            <Setter Property="Background" Value="{markup:Token MdCompCheckboxSelectedDisabledContainerBrush}" />
+            <Setter Property="BorderThickness" Value="{markup:Token MdCompCheckboxSelectedDisabledContainerOutlineWidth}" />
+            <Setter Property="Opacity" Value="{markup:Token MdCompCheckboxSelectedDisabledContainerOpacity}" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ primitives|IconPresenter#PART_Icon">
+            <Setter Property="Foreground" Value="{markup:Token MdCompCheckboxSelectedDisabledIconBrush}" />
+        </Style>
+
+        <Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Opacity" Value="{markup:Token MdImplCheckboxDisabledLabelOpacity}" />
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

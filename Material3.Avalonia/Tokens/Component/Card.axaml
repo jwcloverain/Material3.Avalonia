@@ -32,8 +32,8 @@
     
     <tokens:TokenAlias x:Key="MdCompCardStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
     
-    <Thickness x:Key="MdCompCardFocusRingThickness">3</Thickness>
-    <Thickness x:Key="MdCompCardFocusRingOffset">2</Thickness>
+    <tokens:TokenAlias x:Key="MdCompCardFocusRingThickness" ResourceKey="MdSysStateFocusIndicatorThickness" />
+    <tokens:TokenAlias x:Key="MdCompCardFocusRingOffset" ResourceKey="MdSysStateFocusIndicatorOuterOffset" />
     <tokens:TokenAlias x:Key="MdCompCardFocusRingBrush" ResourceKey="MdSysSecondaryBrush" />
     
     <tokens:TokenAlias x:Key="MdCompCardContentLeadingSpace" ResourceKey="MdSysSpacing200" />

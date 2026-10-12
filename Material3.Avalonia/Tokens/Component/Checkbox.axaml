@@ -1,0 +1,77 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens">
+    <x:Double x:Key="MdCompCheckboxContainerSize">18</x:Double>
+    <CornerRadius x:Key="MdCompCheckboxContainerShape">2</CornerRadius>
+    <x:Double x:Key="MdCompCheckboxIconSize">18</x:Double>
+    <x:Double x:Key="MdCompCheckboxStateLayerSize">40</x:Double>
+    <tokens:TokenAlias x:Key="MdCompCheckboxStateLayerShape" ResourceKey="MdSysShapeCornerFull" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxFocusIndicatorThickness" ResourceKey="MdSysStateFocusIndicatorThickness" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxFocusIndicatorOffset" ResourceKey="MdSysStateFocusIndicatorOuterOffset" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxFocusIndicatorBrush" ResourceKey="MdSysSecondaryBrush" />
+
+    <!-- M3 target measurement has no component token. -->
+    <x:Double x:Key="MdImplCheckboxTargetSize">48</x:Double>
+
+    <Thickness x:Key="MdCompCheckboxUnselectedOutlineWidth">2</Thickness>
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedOutlineBrush" ResourceKey="MdSysOnSurfaceVariantBrush" />
+    <Thickness x:Key="MdCompCheckboxUnselectedHoverOutlineWidth">2</Thickness>
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedHoverOutlineBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedHoverStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedHoverStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <Thickness x:Key="MdCompCheckboxUnselectedFocusOutlineWidth">2</Thickness>
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedFocusOutlineBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedFocusStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedFocusStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <Thickness x:Key="MdCompCheckboxUnselectedPressedOutlineWidth">2</Thickness>
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedPressedOutlineBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedPressedStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+
+    <Thickness x:Key="MdCompCheckboxSelectedOutlineWidth">0</Thickness>
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedContainerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <Thickness x:Key="MdCompCheckboxSelectedHoverOutlineWidth">0</Thickness>
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedHoverContainerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedHoverIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedHoverStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedHoverStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <Thickness x:Key="MdCompCheckboxSelectedFocusOutlineWidth">0</Thickness>
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedFocusContainerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedFocusIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedFocusStateLayerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedFocusStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <Thickness x:Key="MdCompCheckboxSelectedPressedOutlineWidth">0</Thickness>
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedPressedContainerBrush" ResourceKey="MdSysPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedPressedIconBrush" ResourceKey="MdSysOnPrimaryBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedPressedStateLayerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedErrorContainerBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedErrorIconBrush" ResourceKey="MdSysOnErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedErrorOutlineBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedErrorHoverContainerBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedErrorHoverIconBrush" ResourceKey="MdSysOnErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedErrorHoverOutlineBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxErrorHoverStateLayerBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxErrorHoverStateLayerOpacity" ResourceKey="MdSysStatePointerOverOpacity" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedErrorFocusContainerBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedErrorFocusIconBrush" ResourceKey="MdSysOnErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedErrorFocusOutlineBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxErrorFocusStateLayerBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxErrorFocusStateLayerOpacity" ResourceKey="MdSysStateFocusOpacity" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedErrorPressedContainerBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedErrorPressedIconBrush" ResourceKey="MdSysOnErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedErrorPressedOutlineBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxErrorPressedStateLayerBrush" ResourceKey="MdSysErrorBrush" />
+    <tokens:TokenAlias x:Key="MdCompCheckboxErrorPressedStateLayerOpacity" ResourceKey="MdSysStatePressedOpacity" />
+
+    <tokens:TokenAlias x:Key="MdCompCheckboxUnselectedDisabledOutlineBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompCheckboxUnselectedDisabledContainerOpacity">0.38</x:Double>
+    <Thickness x:Key="MdCompCheckboxUnselectedDisabledOutlineWidth">2</Thickness>
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedDisabledContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
+    <x:Double x:Key="MdCompCheckboxSelectedDisabledContainerOpacity">0.38</x:Double>
+    <Thickness x:Key="MdCompCheckboxSelectedDisabledContainerOutlineWidth">0</Thickness>
+    <tokens:TokenAlias x:Key="MdCompCheckboxSelectedDisabledIconBrush" ResourceKey="MdSysSurfaceBrush" />
+    <x:Double x:Key="MdImplCheckboxDisabledLabelOpacity">0.38</x:Double>
+</ResourceDictionary>

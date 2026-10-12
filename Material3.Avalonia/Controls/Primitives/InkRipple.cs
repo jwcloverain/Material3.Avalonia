@@ -29,6 +29,14 @@ public class InkRipple : Control
     public static readonly StyledProperty<bool> BoundedProperty =
         AvaloniaProperty.Register<InkRipple, bool>(nameof(Bounded), true);
 
+    /// <summary>Identifies the option to center bounded ripples originating outside their shape.</summary>
+    public static readonly StyledProperty<bool> CenterOutsideShapeProperty =
+        AvaloniaProperty.Register<InkRipple, bool>(nameof(CenterOutsideShape));
+
+    /// <summary>Identifies the optional element defining the pointer interaction bounds.</summary>
+    public static readonly StyledProperty<Control?> InteractionTargetProperty =
+        AvaloniaProperty.Register<InkRipple, Control?>(nameof(InteractionTarget));
+
     public static readonly StyledProperty<double> BaseOpacityProperty =
         AvaloniaProperty.Register<InkRipple, double>(nameof(BaseOpacity), 0.1);
 
@@ -64,6 +72,20 @@ public class InkRipple : Control
     {
         get => GetValue(BoundedProperty);
         set => SetValue(BoundedProperty, value);
+    }
+
+    /// <summary>Centers a bounded ripple when the pointer starts outside its rounded shape.</summary>
+    public bool CenterOutsideShape
+    {
+        get => GetValue(CenterOutsideShapeProperty);
+        set => SetValue(CenterOutsideShapeProperty, value);
+    }
+
+    /// <summary>Gets or sets the interaction bounds owner, or null to use this ripple's bounds.</summary>
+    public Control? InteractionTarget
+    {
+        get => GetValue(InteractionTargetProperty);
+        set => SetValue(InteractionTargetProperty, value);
     }
 
     public double BaseOpacity
@@ -130,7 +152,7 @@ public class InkRipple : Control
     private long _nextId;
     private int _interactionCommitGeneration;
 
-    private sealed record Interaction(long Id, Point Center);
+    private sealed record Interaction(long Id, Point PointerPosition);
 
     internal Func<bool>? AcceptKeyActivation { get; set; }
     internal Func<bool>? AcceptActivation { get; set; }
@@ -196,6 +218,8 @@ public class InkRipple : Control
         if (change.Property == BoundsProperty || change.Property == BrushProperty ||
             change.Property == CornerRadiusProperty || change.Property == BoundedProperty)
             UpdateVisual();
+        if (change.Property == InteractionTargetProperty)
+            CancelPress();
     }
 
     public override void Render(DrawingContext context)
@@ -289,6 +313,8 @@ public class InkRipple : Control
     {
         if (_host?.IsEffectivelyEnabled != true || Brush is null || !IsPrimaryPress(e, this) ||
             AcceptPress?.Invoke(e) == false) return;
+        if (InteractionTarget is { } target && !new Rect(target.Bounds.Size).Contains(e.GetPosition(target)))
+            return;
         EndKeyboard();
         EndPointer(e.Pointer);
         _presses[e.Pointer] = CreateRipple(e.GetPosition(this));
@@ -313,14 +339,23 @@ public class InkRipple : Control
     private Interaction CreateRipple(Point position)
     {
         var interaction = new Interaction(++_nextId, position);
+        var origin = ResolveOrigin(position);
         // Custom Easing instances can be mutable: sample on the UI thread, never share them with the renderer.
         var easing = new double[1025];
         var grow = GrowEasing ?? new CubicEaseOut();
         for (var i = 0; i < easing.Length; i++) easing[i] = grow.Ease((double)i / (easing.Length - 1));
-        SendInteraction(new RippleVisual.Start(interaction.Id, position, BaseOpacity,
+        SendInteraction(new RippleVisual.Start(interaction.Id, origin, BaseOpacity,
             global::Material3.Avalonia.Motion.MotionSettings.ReduceMotion ? TimeSpan.Zero : GrowDuration,
             FadeInDuration, easing, StackingMode == RippleStackingMode.LatestOnly));
         return interaction;
+    }
+
+    internal Point ResolveOrigin(Point position)
+    {
+        var bounds = new Rect(Bounds.Size);
+        return CenterOutsideShape && Bounded && !new RoundedRect(bounds, CornerRadius).ContainsExclusive(position)
+            ? bounds.Center
+            : position;
     }
 
     private void OnCaptureLost(object? sender, PointerCaptureLostEventArgs e) => EndPointer(e.Pointer);
@@ -331,8 +366,9 @@ public class InkRipple : Control
     {
         if (!_presses.TryGetValue(e.Pointer, out var press)) return;
         var point = e.GetPosition(this);
-        if (!new Rect(Bounds.Size).Contains(point) || e.Pointer.Type == PointerType.Touch &&
-            Math.Abs(point.X - press.Center.X) + Math.Abs(point.Y - press.Center.Y) > 8)
+        var target = InteractionTarget ?? this;
+        if (!new Rect(target.Bounds.Size).Contains(e.GetPosition(target)) || e.Pointer.Type == PointerType.Touch &&
+            Math.Abs(point.X - press.PointerPosition.X) + Math.Abs(point.Y - press.PointerPosition.Y) > 8)
             EndPointer(e.Pointer);
     }
 

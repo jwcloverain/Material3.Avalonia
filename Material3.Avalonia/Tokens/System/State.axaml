@@ -4,4 +4,6 @@
     <x:Double x:Key="MdSysStateFocusOpacity">0.1</x:Double>
     <x:Double x:Key="MdSysStatePressedOpacity">0.1</x:Double>
     <x:Double x:Key="MdSysStateDraggedOpacity">0.16</x:Double>
+    <Thickness x:Key="MdSysStateFocusIndicatorThickness">3</Thickness>
+    <Thickness x:Key="MdSysStateFocusIndicatorOuterOffset">2</Thickness>
 </ResourceDictionary>

@@ -1,0 +1,13 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- M3 has no ScrollBar tokens; keep a 12dp interactive area around the visual thumb. -->
+    <x:Double x:Key="MdImplScrollBarThickness">12</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbCollapsedThickness">4</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbExpandedThickness">6</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbMinimumLength">32</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbOpacity">0.5</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbExpandedOpacity">0.72</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbPointerOverOpacity">0.8</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbPressedOpacity">0.9</x:Double>
+    <x:Double x:Key="MdImplScrollBarThumbDisabledOpacity">0</x:Double>
+</ResourceDictionary>

@@ -23,6 +23,7 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ScrollViewer.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Separator.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/TextBlock.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/AccessText.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/SelectableTextBlock.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/TextBox.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ToolTip.axaml" />
@@ -34,5 +35,6 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/Menu.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/ContextMenu.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/MenuFlyoutPresenter.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Styles/Components/CheckBox.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

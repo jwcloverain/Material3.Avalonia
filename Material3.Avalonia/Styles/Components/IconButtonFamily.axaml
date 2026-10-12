@@ -11,6 +11,7 @@
         <Setter Property="internal:HoverState.IsEnabled" Value="True" />
         <Setter Property="internal:KeyboardActivationGuard.IsEnabled" Value="True" />
         <Setter Property="attached:DensityAssist.Density" Value="Default" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="ClipToBounds" Value="False" />
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -76,6 +77,10 @@
                 </Grid>
             </ControlTemplate>
         </Setter>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Cursor" Value="Arrow" />
+        </Style>
 
         <Style Selector="^ /template/ Border#PART_Background">
             <Setter Property="Opacity" Value="1" />

@@ -10,6 +10,7 @@
     <ControlTheme x:Key="MaterialButtonFamily" TargetType="Button">
         <Setter Property="internal:HoverState.IsEnabled" Value="True" />
         <Setter Property="internal:KeyboardActivationGuard.IsEnabled" Value="True" />
+        <Setter Property="Cursor" Value="Hand" />
         <Setter Property="ClipToBounds" Value="False" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="VerticalAlignment" Value="Center" />
@@ -37,6 +38,10 @@
 
         <Style Selector="^ /template/ primitives|ButtonContentMotion#PART_Content">
             <Setter Property="HorizontalAlignment" Value="{TemplateBinding HorizontalContentAlignment}" />
+        </Style>
+
+        <Style Selector="^:disabled">
+            <Setter Property="Cursor" Value="Arrow" />
         </Style>
 
         <!-- State -->

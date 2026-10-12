@@ -7,8 +7,8 @@
     <tokens:TokenAlias x:Key="MdCompIconButtonDisabledContainerBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompIconButtonDisabledContainerOpacity">0.1</x:Double>
     <tokens:TokenAlias x:Key="MdCompIconButtonDisabledOutlineBrush" ResourceKey="MdSysOutlineVariantBrush" />
-    <Thickness x:Key="MdCompIconButtonFocusRingThickness">3</Thickness>
-    <Thickness x:Key="MdCompIconButtonFocusRingOffset">2</Thickness>
+    <tokens:TokenAlias x:Key="MdCompIconButtonFocusRingThickness" ResourceKey="MdSysStateFocusIndicatorThickness" />
+    <tokens:TokenAlias x:Key="MdCompIconButtonFocusRingOffset" ResourceKey="MdSysStateFocusIndicatorOuterOffset" />
     <tokens:TokenAlias x:Key="MdCompIconButtonFocusRingBrush" ResourceKey="MdSysSecondaryBrush" />
 
     <!-- Standard -->

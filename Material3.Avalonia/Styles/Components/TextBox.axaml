@@ -6,7 +6,6 @@
                     xmlns:primitives="clr-namespace:Material3.Avalonia.Controls.Primitives"
                     xmlns:converters="clr-namespace:Material3.Avalonia.Converters"
                     xmlns:markup="clr-namespace:Material3.Avalonia.Markup"
-                    xmlns:tokens="clr-namespace:Material3.Avalonia.Tokens"
                     xmlns:transitions="clr-namespace:Material3.Avalonia.Motion.Transitions">
 
     <MenuFlyout x:Key="MaterialTextBoxContextFlyout" ShowMode="{OnFormFactor Desktop=Standard, Mobile=Transient}">
@@ -20,9 +19,6 @@
         <MenuItem Header="{DynamicResource StringTextFlyoutSelectAllText}" Command="{Binding $parent[TextBox].SelectAll}"
                   IsEnabled="{Binding $parent[TextBox].Text, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" controls:MenuAssist.TrailingIcon="{markup:Token MaterialTextSelectAllIcon}" />
     </MenuFlyout>
-
-    <!-- Material Web uses a 16dp gap between supporting text and counter. -->
-    <tokens:TokenAlias x:Key="MdImplTextFieldSupportingTextGap" ResourceKey="MdSysSpacing200" />
 
     <converters:TextFieldSupportingTextConverter x:Key="TextFieldSupportingTextConverter" />
     <converters:TextFieldLabelConverter x:Key="TextFieldLabelConverter" />

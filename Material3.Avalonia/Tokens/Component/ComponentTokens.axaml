@@ -9,5 +9,7 @@
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/TextField.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/ToolTip.axaml" />
         <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/Menus.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/Checkbox.axaml" />
+        <MergeResourceInclude Source="avares://Material3.Avalonia/Tokens/Component/ScrollBar.axaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

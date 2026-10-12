@@ -46,7 +46,7 @@
     <tokens:TokenAlias x:Key="MdCompMenusItemTrailingSupportingTextSize" ResourceKey="MdSysTypeScaleLabelLargeSize" />
     <tokens:TokenAlias x:Key="MdCompMenusItemTrailingSupportingTextLineHeight" ResourceKey="MdSysTypeScaleLabelLargeLineHeight" />
     <tokens:TokenAlias x:Key="MdCompMenusItemTrailingSupportingTextTracking" ResourceKey="MdSysTypeScaleLabelLargeTracking" />
-    <Thickness x:Key="MdCompMenusItemFocusIndicatorThickness">3</Thickness>
+    <tokens:TokenAlias x:Key="MdCompMenusItemFocusIndicatorThickness" ResourceKey="MdSysStateFocusIndicatorThickness" />
     <Thickness x:Key="MdCompMenusItemFocusIndicatorOffset">-3</Thickness>
     <Thickness x:Key="MdImplMenusShadowPadding">8,8,8,10</Thickness>
     <tokens:TokenAlias x:Key="MdImplMenusItemSpacing" ResourceKey="MdSysSpacing50" />

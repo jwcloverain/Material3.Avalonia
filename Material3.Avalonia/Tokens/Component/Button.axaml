@@ -119,8 +119,8 @@
     <tokens:TokenAlias x:Key="MdCompButtonDisabledLabelBrush" ResourceKey="MdSysOnSurfaceBrush" />
     <x:Double x:Key="MdCompButtonDisabledLabelOpacity">0.38</x:Double>
 
-    <Thickness x:Key="MdCompButtonFocusRingThickness">3</Thickness>
-    <Thickness x:Key="MdCompButtonFocusRingOffset">2</Thickness>
+    <tokens:TokenAlias x:Key="MdCompButtonFocusRingThickness" ResourceKey="MdSysStateFocusIndicatorThickness" />
+    <tokens:TokenAlias x:Key="MdCompButtonFocusRingOffset" ResourceKey="MdSysStateFocusIndicatorOuterOffset" />
     <tokens:TokenAlias x:Key="MdCompButtonFocusRingBrush" ResourceKey="MdSysSecondaryBrush" />
 
     <!-- Elevated interaction -->

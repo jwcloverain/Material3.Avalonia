@@ -288,4 +288,6 @@
 
     <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldOutlineLabelPadding" ResourceKey="MdSysSpacing50" />
     <tokens:TokenAlias x:Key="MdCompOutlinedTextFieldLabelTextPaddingBottom" ResourceKey="MdSysSpacing100" />
+    <!-- Material Web uses a 16dp gap between supporting text and counter. -->
+    <tokens:TokenAlias x:Key="MdImplTextFieldSupportingTextGap" ResourceKey="MdSysSpacing200" />
 </ResourceDictionary>
