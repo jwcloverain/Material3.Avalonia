@@ -5,8 +5,12 @@ namespace Material3.Avalonia.Tests.Symbols;
 
 public sealed class MaterialSymbolBuildTests
 {
-    [Fact]
-    public void ScannerUnionsEverySupportedAxamlDeclaration()
+    [Theory]
+    [InlineData("clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia", "symbols")]
+    [InlineData("using:Material3.Avalonia.Symbols", "symbols")]
+    [InlineData("https://github.com/klorman/Material3.Avalonia", "m3")]
+    [InlineData("https://github.com/klorman/Material3.Avalonia", "material")]
+    public void ScannerUnionsEverySupportedAxamlDeclaration(string xmlNamespace, string prefix)
     {
         var directory = Path.Combine(Path.GetTempPath(), $"material-symbol-build-{Guid.NewGuid():N}");
         Directory.CreateDirectory(directory);
@@ -14,20 +18,20 @@ public sealed class MaterialSymbolBuildTests
         {
             var xaml = Path.Combine(directory, "Symbols.axaml");
             File.WriteAllText(xaml,
-                """
-                <Styles xmlns="https://github.com/avaloniaui"
-                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                        xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia">
-                    <Button Tag="{symbols:Symbol Home}" />
-                    <Button Tag="{symbols:Symbol Home}" />
-                    <Button Tag="{symbols:Symbol Tune, Families=Rounded}" />
-                    <Button Tag="{symbols:Symbol Tune, Families=Sharp}" />
-                    <Button Tag="{x:Static symbols:MaterialSymbol.Search}" />
-                    <symbols:MaterialSymbolResource x:Key="DeleteIcon" Symbol="Delete" Families="Outlined" />
-                    <symbols:MaterialSymbolsInclude x:Key="Player" Symbols="PlayArrow, Pause" Families="Rounded" />
-                    <symbols:MaterialSymbolsInclude x:Key="Dynamic" Symbols="All" Families="Rounded" />
-                </Styles>
-                """);
+                $$"""
+                  <Styles xmlns="https://github.com/avaloniaui"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:{{prefix}}="{{xmlNamespace}}">
+                      <Button Tag="{{{prefix}}:Symbol Home}" />
+                      <Button Tag="{{{prefix}}:Symbol Home}" />
+                      <Button Tag="{{{prefix}}:Symbol Tune, Families=Rounded}" />
+                      <Button Tag="{{{prefix}}:Symbol Tune, Families=Sharp}" />
+                      <Button Tag="{x:Static {{prefix}}:MaterialSymbol.Search}" />
+                      <{{prefix}}:MaterialSymbolResource x:Key="DeleteIcon" Symbol="Delete" Families="Outlined" />
+                      <{{prefix}}:MaterialSymbolsInclude x:Key="Player" Symbols="PlayArrow, Pause" Families="Rounded" />
+                      <{{prefix}}:MaterialSymbolsInclude x:Key="Dynamic" Symbols="All" Families="Rounded" />
+                  </Styles>
+                  """);
             var manifest = Path.Combine(directory, "requests.manifest");
             var catalog = WriteCatalog(directory, "Delete", "Home", "Pause", "PlayArrow", "Search", "Tune");
             var task = new CollectMaterialSymbols
@@ -53,8 +57,11 @@ public sealed class MaterialSymbolBuildTests
         }
     }
 
-    [Fact]
-    public void ScannerRejectsUnknownSymbolsBeforeWritingManifest()
+    [Theory]
+    [InlineData("clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia")]
+    [InlineData("using:Material3.Avalonia.Symbols")]
+    [InlineData("https://github.com/klorman/Material3.Avalonia")]
+    public void ScannerRejectsUnknownSymbolsBeforeWritingManifest(string xmlNamespace)
     {
         var directory = Path.Combine(Path.GetTempPath(), $"material-symbol-build-{Guid.NewGuid():N}");
         Directory.CreateDirectory(directory);
@@ -62,13 +69,13 @@ public sealed class MaterialSymbolBuildTests
         {
             var xaml = Path.Combine(directory, "Symbols.axaml");
             File.WriteAllText(xaml,
-                """
-                <Styles xmlns="https://github.com/avaloniaui"
-                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                        xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia">
-                    <symbols:MaterialSymbolsInclude x:Key="Player" Symbols="PlayArow" />
-                </Styles>
-                """);
+                $$"""
+                  <Styles xmlns="https://github.com/avaloniaui"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:symbols="{{xmlNamespace}}">
+                      <symbols:MaterialSymbolsInclude x:Key="Player" Symbols="PlayArow" />
+                  </Styles>
+                  """);
             var buildEngine = new RecordingBuildEngine();
             var task = new CollectMaterialSymbols
             {
@@ -88,8 +95,11 @@ public sealed class MaterialSymbolBuildTests
         }
     }
 
-    [Fact]
-    public void ScannerPreservesFamiliesForStaticMaterialSymbolResource()
+    [Theory]
+    [InlineData("clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia")]
+    [InlineData("using:Material3.Avalonia.Symbols")]
+    [InlineData("https://github.com/klorman/Material3.Avalonia")]
+    public void ScannerPreservesFamiliesForStaticMaterialSymbolResource(string xmlNamespace)
     {
         var directory = Path.Combine(Path.GetTempPath(), $"material-symbol-build-{Guid.NewGuid():N}");
         Directory.CreateDirectory(directory);
@@ -97,15 +107,15 @@ public sealed class MaterialSymbolBuildTests
         {
             var xaml = Path.Combine(directory, "Symbols.axaml");
             File.WriteAllText(xaml,
-                """
-                <Styles xmlns="https://github.com/avaloniaui"
-                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                        xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia">
-                    <symbols:MaterialSymbolResource x:Key="DeleteIcon"
-                                                     Symbol="{x:Static symbols:MaterialSymbol.Delete}"
-                                                     Families="Rounded" />
-                </Styles>
-                """);
+                $$"""
+                  <Styles xmlns="https://github.com/avaloniaui"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:symbols="{{xmlNamespace}}">
+                      <symbols:MaterialSymbolResource x:Key="DeleteIcon"
+                                                       Symbol="{x:Static symbols:MaterialSymbol.Delete}"
+                                                       Families="Rounded" />
+                  </Styles>
+                  """);
             var manifest = Path.Combine(directory, "requests.manifest");
             var task = new CollectMaterialSymbols
             {

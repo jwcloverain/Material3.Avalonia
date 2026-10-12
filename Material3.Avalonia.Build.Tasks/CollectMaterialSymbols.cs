@@ -204,6 +204,9 @@ public sealed class CollectMaterialSymbols : Microsoft.Build.Utilities.Task
 
     private static bool IsSymbolsNamespace(XNamespace? value) => value is not null &&
                                                                  (value.NamespaceName.Equals(
+                                                                      "https://github.com/klorman/Material3.Avalonia",
+                                                                      StringComparison.Ordinal) ||
+                                                                  value.NamespaceName.Equals(
                                                                       "using:Material3.Avalonia.Symbols",
                                                                       StringComparison.Ordinal) ||
                                                                   value.NamespaceName.Equals(

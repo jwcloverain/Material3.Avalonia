@@ -2,12 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:attached="clr-namespace:Material3.Avalonia.Attached;assembly=Material3.Avalonia"
-             xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
-             xmlns:density="clr-namespace:Material3.Avalonia.Density;assembly=Material3.Avalonia"
-             xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
-             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
-             xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia"
+             xmlns:m3="https://github.com/klorman/Material3.Avalonia"
              xmlns:viewModels="clr-namespace:Material3.Avalonia.Demo.ViewModels"
              mc:Ignorable="d"
              d:DesignWidth="800"
@@ -20,57 +15,57 @@
         <Style Selector="Border.demo-section">
             <Setter Property="Background" Value="{DynamicResource MdSysSurfaceContainerLowBrush}" />
             <Setter Property="CornerRadius" Value="{DynamicResource MdSysShapeCornerLarge}" />
-            <Setter Property="Padding" Value="{markup:DynamicThickness MdSysSpacing300}" />
+            <Setter Property="Padding" Value="{m3:DynamicThickness MdSysSpacing300}" />
         </Style>
     </UserControl.Styles>
 
-    <StackPanel Margin="{markup:DynamicThickness MdSysSpacing300}"
+    <StackPanel Margin="{m3:DynamicThickness MdSysSpacing300}"
                 Spacing="{DynamicResource MdSysSpacing400}"
-                attached:DensityAssist.Density="{Binding SelectedDensity}">
+                m3:DensityAssist.Density="{Binding SelectedDensity}">
         <!-- Header -->
         <StackPanel Spacing="{DynamicResource MdSysSpacing100}">
             <TextBlock Text="Buttons"
                        Foreground="{DynamicResource MdSysOnBackgroundBrush}"
-                       helpers:Typography.TextStyle="HeadlineMedium" />
+                       m3:Typography.TextStyle="HeadlineMedium" />
             <TextBlock Text="Interactive Material 3 button gallery. Hover, focus, press and tab through each example to verify variants, sizes, icons and disabled behavior."
                        MaxWidth="696"
                        TextWrapping="Wrap"
                        Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
-                       helpers:Typography.TextStyle="BodyMedium" />
+                       m3:Typography.TextStyle="BodyMedium" />
         </StackPanel>
 
         <StackPanel Orientation="Horizontal"
                     Spacing="{DynamicResource MdSysSpacing100}"
-                    attached:DensityAssist.Density="{x:Static density:MaterialDensity.Default}">
+                    m3:DensityAssist.Density="{x:Static m3:MaterialDensity.Default}">
             <TextBlock Text="Button density"
                        VerticalAlignment="Center"
                        Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
-                       helpers:Typography.TextStyle="LabelLarge" />
+                       m3:Typography.TextStyle="LabelLarge" />
 
             <Button Content="0"
                     Classes="outlined xs"
                     Command="{Binding SetDensityCommand}"
-                    CommandParameter="{x:Static density:MaterialDensity.Default}" />
+                    CommandParameter="{x:Static m3:MaterialDensity.Default}" />
             <Button Content="-1"
                     Classes="outlined xs"
                     Command="{Binding SetDensityCommand}"
-                    CommandParameter="{x:Static density:MaterialDensity.Dense1}" />
+                    CommandParameter="{x:Static m3:MaterialDensity.Dense1}" />
             <Button Content="-2"
                     Classes="outlined xs"
                     Command="{Binding SetDensityCommand}"
-                    CommandParameter="{x:Static density:MaterialDensity.Dense2}" />
+                    CommandParameter="{x:Static m3:MaterialDensity.Dense2}" />
             <Button Content="-3"
                     Classes="outlined xs"
                     Command="{Binding SetDensityCommand}"
-                    CommandParameter="{x:Static density:MaterialDensity.Dense3}" />
+                    CommandParameter="{x:Static m3:MaterialDensity.Dense3}" />
             <Button Content="-4"
                     Classes="outlined xs"
                     Command="{Binding SetDensityCommand}"
-                    CommandParameter="{x:Static density:MaterialDensity.Dense4}" />
+                    CommandParameter="{x:Static m3:MaterialDensity.Dense4}" />
             <Button Content="-5"
                     Classes="outlined xs"
                     Command="{Binding SetDensityCommand}"
-                    CommandParameter="{x:Static density:MaterialDensity.Dense5}" />
+                    CommandParameter="{x:Static m3:MaterialDensity.Dense5}" />
         </StackPanel>
 
         <!-- Sizes -->
@@ -79,30 +74,30 @@
                 <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Sizes"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
-                               helpers:Typography.TextStyle="TitleLarge" />
+                               m3:Typography.TextStyle="TitleLarge" />
                     <TextBlock Text="Tonal buttons show the supported compact-to-prominent size scale."
                                TextWrapping="Wrap"
                                Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
-                               helpers:Typography.TextStyle="BodySmall" />
+                               m3:Typography.TextStyle="BodySmall" />
                 </StackPanel>
 
                 <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
                              Orientation="Horizontal">
                     <Button Content="Extra small"
                             Classes="tonal xs"
-                            controls:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
+                            m3:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
                     <Button Content="Small"
                             Classes="tonal sm"
-                            controls:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
+                            m3:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
                     <Button Content="Medium"
                             Classes="tonal md"
-                            controls:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
+                            m3:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
                     <Button Content="Large"
                             Classes="tonal lg"
-                            controls:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
+                            m3:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
                     <Button Content="Extra large"
                             Classes="tonal xl"
-                            controls:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
+                            m3:ButtonAssist.Icon="{DynamicResource MdIconMail}" />
                 </StackPanel>
             </StackPanel>
         </Border>
@@ -113,11 +108,11 @@
                 <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Variants"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
-                               helpers:Typography.TextStyle="TitleLarge" />
+                               m3:Typography.TextStyle="TitleLarge" />
                     <TextBlock Text="The core Material 3 button variants share Avalonia's native pointer, keyboard, focus and command behavior."
                                TextWrapping="Wrap"
                                Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
-                               helpers:Typography.TextStyle="BodySmall" />
+                               m3:Typography.TextStyle="BodySmall" />
                 </StackPanel>
 
                 <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
@@ -142,11 +137,11 @@
                 <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Disabled states"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
-                               helpers:Typography.TextStyle="TitleLarge" />
+                               m3:Typography.TextStyle="TitleLarge" />
                     <TextBlock Text="Disabled buttons verify variant-specific content, container, outline and elevation treatment."
                                TextWrapping="Wrap"
                                Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
-                               helpers:Typography.TextStyle="BodySmall" />
+                               m3:Typography.TextStyle="BodySmall" />
                 </StackPanel>
 
                 <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
@@ -176,61 +171,61 @@
                 <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Icon content"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
-                               helpers:Typography.TextStyle="TitleLarge" />
+                               m3:Typography.TextStyle="TitleLarge" />
                     <TextBlock Text="ButtonAssist.Icon accepts vector icon resources and bitmap asset URIs while preserving Material spacing and size tokens."
                                TextWrapping="Wrap"
                                Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
-                               helpers:Typography.TextStyle="BodySmall" />
+                               m3:Typography.TextStyle="BodySmall" />
                 </StackPanel>
 
                 <StackPanel Spacing="{DynamicResource MdSysSpacing200}">
                     <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                         <TextBlock Text="Vector icon"
                                    Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
-                                   helpers:Typography.TextStyle="LabelLarge" />
+                                   m3:Typography.TextStyle="LabelLarge" />
 
                         <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
                                     Orientation="Horizontal">
                             <Button Content="Elevated"
                                     Classes="elevated md"
-                                    controls:ButtonAssist.Icon="{symbols:Symbol Edit}" />
+                                    m3:ButtonAssist.Icon="{m3:Symbol Edit}" />
                             <Button Content="Filled"
                                     Classes="filled md"
-                                    controls:ButtonAssist.Icon="{symbols:Symbol Edit}" />
+                                    m3:ButtonAssist.Icon="{m3:Symbol Edit}" />
                             <Button Content="Tonal"
                                     Classes="tonal md"
-                                    controls:ButtonAssist.Icon="{symbols:Symbol Edit}" />
+                                    m3:ButtonAssist.Icon="{m3:Symbol Edit}" />
                             <Button Content="Outlined"
                                     Classes="outlined md"
-                                    controls:ButtonAssist.Icon="{symbols:Symbol Edit}" />
+                                    m3:ButtonAssist.Icon="{m3:Symbol Edit}" />
                             <Button Content="Text"
                                     Classes="text md"
-                                    controls:ButtonAssist.Icon="{symbols:Symbol Edit}" />
+                                    m3:ButtonAssist.Icon="{m3:Symbol Edit}" />
                         </StackPanel>
                     </StackPanel>
 
                     <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                         <TextBlock Text="Bitmap icon"
                                    Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
-                                   helpers:Typography.TextStyle="LabelLarge" />
+                                   m3:Typography.TextStyle="LabelLarge" />
 
                         <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
                                     Orientation="Horizontal">
                             <Button Content="Elevated"
                                     Classes="elevated md"
-                                    controls:ButtonAssist.Icon="avares://Material3.Avalonia.Demo/Assets/avatar_24.png" />
+                                    m3:ButtonAssist.Icon="avares://Material3.Avalonia.Demo/Assets/avatar_24.png" />
                             <Button Content="Filled"
                                     Classes="filled md"
-                                    controls:ButtonAssist.Icon="avares://Material3.Avalonia.Demo/Assets/avatar_24.png" />
+                                    m3:ButtonAssist.Icon="avares://Material3.Avalonia.Demo/Assets/avatar_24.png" />
                             <Button Content="Tonal"
                                     Classes="tonal md"
-                                    controls:ButtonAssist.Icon="avares://Material3.Avalonia.Demo/Assets/avatar_24.png" />
+                                    m3:ButtonAssist.Icon="avares://Material3.Avalonia.Demo/Assets/avatar_24.png" />
                             <Button Content="Outlined"
                                     Classes="outlined md"
-                                    controls:ButtonAssist.Icon="avares://Material3.Avalonia.Demo/Assets/avatar_24.png" />
+                                    m3:ButtonAssist.Icon="avares://Material3.Avalonia.Demo/Assets/avatar_24.png" />
                             <Button Content="Text"
                                     Classes="text md"
-                                    controls:ButtonAssist.Icon="avares://Material3.Avalonia.Demo/Assets/avatar_24.png" />
+                                    m3:ButtonAssist.Icon="avares://Material3.Avalonia.Demo/Assets/avatar_24.png" />
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -243,11 +238,11 @@
                 <StackPanel Spacing="{DynamicResource MdSysSpacing50}">
                     <TextBlock Text="Square shape"
                                Foreground="{DynamicResource MdSysOnSurfaceBrush}"
-                               helpers:Typography.TextStyle="TitleLarge" />
+                               m3:Typography.TextStyle="TitleLarge" />
                     <TextBlock Text="The square class verifies the alternate shape path across every button variant."
                                TextWrapping="Wrap"
                                Foreground="{DynamicResource MdSysOnSurfaceVariantBrush}"
-                               helpers:Typography.TextStyle="BodySmall" />
+                               m3:Typography.TextStyle="BodySmall" />
                 </StackPanel>
 
                 <StackPanel Spacing="{DynamicResource MdSysSpacing200}"
@@ -267,17 +262,17 @@
         </Border>
         <Border Classes="demo-section">
             <StackPanel Spacing="{DynamicResource MdSysSpacing200}">
-                <TextBlock Text="Resize motion" helpers:Typography.TextStyle="TitleLarge" />
+                <TextBlock Text="Resize motion" m3:Typography.TextStyle="TitleLarge" />
                 <Grid ColumnDefinitions="*,*,*" ColumnSpacing="{DynamicResource MdSysSpacing200}">
                     <StackPanel Grid.Column="0" Spacing="{DynamicResource MdSysSpacing100}">
-                        <TextBlock Text="Leading edge" helpers:Typography.TextStyle="LabelMedium" />
+                        <TextBlock Text="Leading edge" m3:Typography.TextStyle="LabelMedium" />
                         <Button x:Name="ResizeSample"
                                 MinWidth="160"
                                 Content="Save"
                                 Classes="filled sm" />
                     </StackPanel>
                     <StackPanel Grid.Column="1" Spacing="{DynamicResource MdSysSpacing100}">
-                        <TextBlock Text="Centered" TextAlignment="Center" helpers:Typography.TextStyle="LabelMedium" />
+                        <TextBlock Text="Centered" TextAlignment="Center" m3:Typography.TextStyle="LabelMedium" />
                         <Button x:Name="ResizeSampleCentered"
                                 Content="Save"
                                 Classes="filled sm"
@@ -285,7 +280,7 @@
                                 HorizontalAlignment="Center" />
                     </StackPanel>
                     <StackPanel Grid.Column="2" Spacing="{DynamicResource MdSysSpacing100}">
-                        <TextBlock Text="RTL" TextAlignment="Right" helpers:Typography.TextStyle="LabelMedium" />
+                        <TextBlock Text="RTL" TextAlignment="Right" m3:Typography.TextStyle="LabelMedium" />
                         <Button x:Name="ResizeSampleRtl"
                                 Content="Save"
                                 Classes="filled sm"

@@ -1,28 +1,25 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:attached="clr-namespace:Material3.Avalonia.Attached;assembly=Material3.Avalonia"
-             xmlns:controls="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
-             xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
-             xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
+             xmlns:m3="https://github.com/klorman/Material3.Avalonia"
              xmlns:vm="clr-namespace:Material3.Avalonia.Demo.ViewModels"
              x:DataType="vm:CheckBoxesViewModel"
              x:Class="Material3.Avalonia.Demo.Views.CheckBoxes">
     <UserControl.Styles>
         <Style Selector="Border.checkbox-section">
-            <Setter Property="Background" Value="{markup:Token MdSysSurfaceContainerLowBrush}" />
-            <Setter Property="CornerRadius" Value="{markup:Token MdSysShapeCornerLarge}" />
-            <Setter Property="Padding" Value="{markup:DynamicThickness MdSysSpacing300}" />
+            <Setter Property="Background" Value="{m3:Token MdSysSurfaceContainerLowBrush}" />
+            <Setter Property="CornerRadius" Value="{m3:Token MdSysShapeCornerLarge}" />
+            <Setter Property="Padding" Value="{m3:DynamicThickness MdSysSpacing300}" />
         </Style>
     </UserControl.Styles>
     <StackPanel MaxWidth="720"
-                Margin="{markup:DynamicThickness MdSysSpacing300}"
-                Spacing="{markup:Token MdSysSpacing300}">
-        <TextBlock Text="Checkboxes" helpers:Typography.TextStyle="HeadlineMedium" />
+                Margin="{m3:DynamicThickness MdSysSpacing300}"
+                Spacing="{m3:Token MdSysSpacing300}">
+        <TextBlock Text="Checkboxes" m3:Typography.TextStyle="HeadlineMedium" />
         <TextBlock Text="Click the indicator, label or space around it. Use Tab, Space and Enter; hold, drag away and rapidly toggle to inspect the ripple and icon transitions."
-                   TextWrapping="Wrap" helpers:Typography.TextStyle="BodyMedium" />
+                   TextWrapping="Wrap" m3:Typography.TextStyle="BodyMedium" />
         <Border Classes="checkbox-section">
-            <StackPanel Spacing="{markup:Token MdSysSpacing100}">
-                <TextBlock Text="Selection and error states" helpers:Typography.TextStyle="TitleMedium" />
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Selection and error states" m3:Typography.TextStyle="TitleMedium" />
                 <WrapPanel>
                     <CheckBox Content="Unchecked" />
                     <CheckBox Content="Checked" IsChecked="True" />
@@ -34,18 +31,18 @@
                     <CheckBox Content="Mixed" IsChecked="{x:Null}" IsEnabled="False" />
                 </WrapPanel>
                 <WrapPanel>
-                    <CheckBox Content="Error" controls:CheckBoxAssist.IsError="True" />
-                    <CheckBox Content="Checked error" IsChecked="True" controls:CheckBoxAssist.IsError="True" />
-                    <CheckBox Content="Mixed error" IsChecked="{x:Null}" controls:CheckBoxAssist.IsError="True" />
+                    <CheckBox Content="Error" m3:CheckBoxAssist.IsError="True" />
+                    <CheckBox Content="Checked error" IsChecked="True" m3:CheckBoxAssist.IsError="True" />
+                    <CheckBox Content="Mixed error" IsChecked="{x:Null}" m3:CheckBoxAssist.IsError="True" />
                 </WrapPanel>
             </StackPanel>
         </Border>
         <Border Classes="checkbox-section">
-            <StackPanel Spacing="{markup:Token MdSysSpacing100}">
-                <TextBlock Text="Click targets and content" helpers:Typography.TextStyle="TitleMedium" />
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Click targets and content" m3:Typography.TextStyle="TitleMedium" />
                 <CheckBox Content="Left-aligned target" />
                 <CheckBox Content="Stretched target — click the empty space" HorizontalAlignment="Stretch"
-                          Background="{markup:Token MdSysSurfaceContainerHighBrush}" />
+                          Background="{m3:Token MdSysSurfaceContainerHighBrush}" />
                 <CheckBox Content="A long checkbox label wraps naturally when the available width is limited, while its focus ring stays around the indicator."
                           MaxWidth="320" />
                 <CheckBox Content="Right-to-left layout" FlowDirection="RightToLeft" HorizontalAlignment="Stretch" />
@@ -54,7 +51,7 @@
                         <DataTemplate x:DataType="x:String">
                             <StackPanel>
                                 <TextBlock Text="{Binding}" />
-                                <TextBlock Text="Custom secondary content" helpers:Typography.TextStyle="BodySmall" />
+                                <TextBlock Text="Custom secondary content" m3:Typography.TextStyle="BodySmall" />
                             </StackPanel>
                         </DataTemplate>
                     </CheckBox.ContentTemplate>
@@ -64,32 +61,32 @@
             </StackPanel>
         </Border>
         <Border Classes="checkbox-section">
-            <StackPanel Spacing="{markup:Token MdSysSpacing100}" attached:DensityAssist.Density="Dense5">
-                <TextBlock Text="Explicit density" helpers:Typography.TextStyle="TitleMedium" />
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}" m3:DensityAssist.Density="Dense5">
+                <TextBlock Text="Explicit density" m3:Typography.TextStyle="TitleMedium" />
                 <TextBlock Text="The label stays aligned. Dense3–Dense5 also reduce the circle; the 18 dp indicator stays unchanged."
-                           helpers:Typography.TextStyle="BodySmall" TextWrapping="Wrap" />
+                           m3:Typography.TextStyle="BodySmall" TextWrapping="Wrap" />
                 <CheckBox Content="Default 48 — parent Dense5 is not inherited" />
-                <CheckBox Content="Dense1 — 44" attached:DensityAssist.Density="Dense1" />
-                <CheckBox Content="Dense2 — 40" attached:DensityAssist.Density="Dense2" />
-                <CheckBox Content="Dense3 — 36" attached:DensityAssist.Density="Dense3" />
-                <CheckBox Content="Dense4 — 32" attached:DensityAssist.Density="Dense4" />
-                <CheckBox Content="Dense5 — 28" attached:DensityAssist.Density="Dense5" />
+                <CheckBox Content="Dense1 — 44" m3:DensityAssist.Density="Dense1" />
+                <CheckBox Content="Dense2 — 40" m3:DensityAssist.Density="Dense2" />
+                <CheckBox Content="Dense3 — 36" m3:DensityAssist.Density="Dense3" />
+                <CheckBox Content="Dense4 — 32" m3:DensityAssist.Density="Dense4" />
+                <CheckBox Content="Dense5 — 28" m3:DensityAssist.Density="Dense5" />
                 <StackPanel Orientation="Horizontal" Spacing="8">
                     <CheckBox AutomationProperties.Name="Default density" />
-                    <CheckBox AutomationProperties.Name="Dense1" attached:DensityAssist.Density="Dense1" />
-                    <CheckBox AutomationProperties.Name="Dense2" attached:DensityAssist.Density="Dense2" />
-                    <CheckBox AutomationProperties.Name="Dense3" attached:DensityAssist.Density="Dense3" />
-                    <CheckBox AutomationProperties.Name="Dense4" attached:DensityAssist.Density="Dense4" />
-                    <CheckBox AutomationProperties.Name="Dense5" attached:DensityAssist.Density="Dense5" />
+                    <CheckBox AutomationProperties.Name="Dense1" m3:DensityAssist.Density="Dense1" />
+                    <CheckBox AutomationProperties.Name="Dense2" m3:DensityAssist.Density="Dense2" />
+                    <CheckBox AutomationProperties.Name="Dense3" m3:DensityAssist.Density="Dense3" />
+                    <CheckBox AutomationProperties.Name="Dense4" m3:DensityAssist.Density="Dense4" />
+                    <CheckBox AutomationProperties.Name="Dense5" m3:DensityAssist.Density="Dense5" />
                 </StackPanel>
             </StackPanel>
         </Border>
         <Border Classes="checkbox-section">
-            <StackPanel Spacing="{markup:Token MdSysSpacing100}">
-                <TextBlock Text="Content and size motion" helpers:Typography.TextStyle="TitleMedium" />
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Content and size motion" m3:Typography.TextStyle="TitleMedium" />
                 <TextBlock Text="Change several settings rapidly. Tab to the checkbox to watch its focus ring during resizing."
-                           TextWrapping="Wrap" helpers:Typography.TextStyle="BodySmall" />
-                <WrapPanel ItemSpacing="{markup:Token MdSysSpacing100}">
+                           TextWrapping="Wrap" m3:Typography.TextStyle="BodySmall" />
+                <WrapPanel ItemSpacing="{m3:Token MdSysSpacing100}">
                     <Button Content="Change text" Click="OnTextClick" />
                     <Button Content="Change template" Click="OnTemplateClick" />
                     <Button Content="Change width" Click="OnWidthClick" />
@@ -101,25 +98,25 @@
             </StackPanel>
         </Border>
         <Border Classes="checkbox-section">
-            <StackPanel Spacing="{markup:Token MdSysSpacing100}">
-                <TextBlock Text="Related options" helpers:Typography.TextStyle="TitleMedium" />
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Related options" m3:Typography.TextStyle="TitleMedium" />
                 <CheckBox Content="Select all notifications" IsChecked="{Binding AllSelected, Mode=OneWay}"
                           Command="{Binding SelectAllCommand}" />
-                <StackPanel Margin="{markup:DynamicThickness MdSysSpacing300 MdSysSpacing0 MdSysSpacing0 MdSysSpacing0}">
+                <StackPanel Margin="{m3:DynamicThickness MdSysSpacing300 MdSysSpacing0 MdSysSpacing0 MdSysSpacing0}">
                     <CheckBox Content="Email" IsChecked="{Binding Email, Mode=TwoWay}" Command="{Binding CountActivationCommand}" />
                     <CheckBox Content="Push" IsChecked="{Binding Push, Mode=TwoWay}" Command="{Binding CountActivationCommand}" />
                     <CheckBox Content="SMS" IsChecked="{Binding Sms, Mode=TwoWay}" Command="{Binding CountActivationCommand}" />
                 </StackPanel>
-                <TextBlock Text="{Binding ActivationText}" helpers:Typography.TextStyle="BodySmall" />
+                <TextBlock Text="{Binding ActivationText}" m3:Typography.TextStyle="BodySmall" />
                 <CheckBox Content="Native three-state cycle" IsThreeState="True" />
             </StackPanel>
         </Border>
         <Border Classes="checkbox-section">
-            <StackPanel Spacing="{markup:Token MdSysSpacing100}">
-                <TextBlock Text="Validation and external supporting text" helpers:Typography.TextStyle="TitleMedium" />
+            <StackPanel Spacing="{m3:Token MdSysSpacing100}">
+                <TextBlock Text="Validation and external supporting text" m3:Typography.TextStyle="TitleMedium" />
                 <CheckBox x:Name="ValidatedOption" Content="Delivery notifications" />
                 <TextBlock Text="You can change this preference at any time."
-                           helpers:Typography.TextStyle="BodySmall" TextWrapping="Wrap" />
+                           m3:Typography.TextStyle="BodySmall" TextWrapping="Wrap" />
                 <Button Content="Toggle validation error" Click="OnValidationClick" />
                 <CheckBox x:Name="RemappedOption" Content="Local token alias" IsChecked="True" />
                 <Button Content="Remap selected colors" Click="OnRemapClick" />

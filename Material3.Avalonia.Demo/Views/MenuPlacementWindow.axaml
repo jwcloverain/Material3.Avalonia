@@ -1,7 +1,7 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:Material3.Avalonia.Demo.ViewModels"
-        xmlns:symbols="clr-namespace:Material3.Avalonia.Symbols;assembly=Material3.Avalonia"
+        xmlns:m3="https://github.com/klorman/Material3.Avalonia"
         x:Class="Material3.Avalonia.Demo.Views.MenuPlacementWindow"
         x:DataType="vm:MenuScenarioViewModel"
         x:CompileBindings="True"
@@ -30,7 +30,7 @@
             <Button.Flyout>
                 <MenuFlyout Opening="OnMenuOpening">
                     <MenuItem Header="Open"
-                              Icon="{symbols:Symbol FolderOpen}"
+                              Icon="{m3:Symbol FolderOpen}"
                               Command="{Binding SelectCommand}"
                               CommandParameter="Open" />
                     <MenuItem Header="Export">
@@ -46,7 +46,7 @@
             <Button.Flyout>
                 <MenuFlyout Opening="OnMenuOpening">
                     <MenuItem Header="Open"
-                              Icon="{symbols:Symbol FolderOpen}"
+                              Icon="{m3:Symbol FolderOpen}"
                               Command="{Binding SelectCommand}"
                               CommandParameter="Open" />
                     <MenuItem Header="Export">
@@ -62,7 +62,7 @@
             <Button.Flyout>
                 <MenuFlyout Opening="OnMenuOpening">
                     <MenuItem Header="Open"
-                              Icon="{symbols:Symbol FolderOpen}"
+                              Icon="{m3:Symbol FolderOpen}"
                               Command="{Binding SelectCommand}"
                               CommandParameter="Open" />
                     <MenuItem Header="Export">
@@ -78,7 +78,7 @@
             <Button.Flyout>
                 <MenuFlyout Opening="OnMenuOpening">
                     <MenuItem Header="Open"
-                              Icon="{symbols:Symbol FolderOpen}"
+                              Icon="{m3:Symbol FolderOpen}"
                               Command="{Binding SelectCommand}"
                               CommandParameter="Open" />
                     <MenuItem Header="Export">

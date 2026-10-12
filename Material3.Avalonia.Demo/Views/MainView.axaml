@@ -3,18 +3,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:Material3.Avalonia.Demo.Views"
-        xmlns:controls="clr-namespace:Material3.Avalonia.Controls;assembly=Material3.Avalonia"
-        xmlns:helpers="clr-namespace:Material3.Avalonia.Controls.Helpers;assembly=Material3.Avalonia"
-        xmlns:markup="clr-namespace:Material3.Avalonia.Markup;assembly=Material3.Avalonia"
-        xmlns:controls1="clr-namespace:Material3.Avalonia.Attached.Controls;assembly=Material3.Avalonia"
+        xmlns:m3="https://github.com/klorman/Material3.Avalonia"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Material3.Avalonia.Demo.Views.MainView"
         Background="{DynamicResource MdSysBackgroundBrush}">
 
     <ScrollViewer VerticalScrollBarVisibility="Visible"
-                  controls1:ScrollViewerAssist.ScrollBarInset="0 18">
+                  m3:ScrollViewerAssist.ScrollBarInset="0 18">
         <StackPanel Orientation="Vertical"
-                    Margin="{markup:DynamicThickness MdSysSpacing200}"
+                    Margin="{m3:DynamicThickness MdSysSpacing200}"
                     Spacing="{DynamicResource MdSysSpacing200}">
             <views:TonalPalettes IsVisible="False" />
 
@@ -39,7 +36,7 @@
             <views:ScrollViewers HorizontalAlignment="Center" IsVisible="True" />
 
             <Border IsVisible="False" BorderBrush="Black" BorderThickness="1" Padding="4" Margin="100" Width="{Binding $self.Bounds.Height}" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <controls:MaterialShape Kind="Arch" Width="400" Height="400"
+                <m3:MaterialShape Kind="Arch" Width="400" Height="400"
                                           Fill="{StaticResource MdSysOnSurfaceBrush}" />
             </Border>
 
