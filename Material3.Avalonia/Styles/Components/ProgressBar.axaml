@@ -1,0 +1,35 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui">
+  <!-- Material3-style progress components: Linear and Circular -->
+
+  <Style Selector="LinearProgressBar">
+    <Setter Property="Width" Value="200"/>
+    <Setter Property="Height" Value="4"/>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <Canvas Name="PART_Track" Background="{DynamicResource SurfaceBrush, #FFEFEFEF}" Width="100%" Height="Auto">
+            <Border Name="PART_Track" Background="{DynamicResource SurfaceBrush, #FFEFEFEF}" CornerRadius="2" Width="100%" Height="4"/>
+            <Border Name="PART_Indicator" Background="{DynamicResource PrimaryBrush, #FF6200EE}" CornerRadius="2" Width="0" Height="4"/>
+          </Canvas>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+  <Style Selector="CircularProgress">
+    <Setter Property="Width" Value="40"/>
+    <Setter Property="Height" Value="40"/>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <!-- Background ring -->
+          <Ellipse Stroke="{DynamicResource OutlineBrush, #FFBDBDBD}" StrokeThickness="4"/>
+
+          <!-- Foreground arc implemented as stroked ellipse with dash to create arc -->
+          <Ellipse Name="PART_Arc" Stroke="{DynamicResource PrimaryBrush, #FF6200EE}" StrokeThickness="4" StrokeDashArray="0.25 0.75" StrokeStartLineCap="Round" StrokeEndLineCap="Round" RenderTransformOrigin="0.5,0.5"/>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+</ResourceDictionary>
